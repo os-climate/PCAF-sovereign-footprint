@@ -10,6 +10,7 @@ import argparse
 import re
 import os
 import openpyxl
+import country_converter as coco
 
 
 
@@ -115,8 +116,13 @@ def parse_file(input_filename,attribute_value):
             skip_rows = config['SHEET_1']['skip_rows'].split(",")
         except:
             skip_rows = str()        
-        print(skip_rows)    
-        df_collection[0] = pd.read_csv(input_filename, quotechar='"',sep=seperator,engine='python',skiprows=int(skip_rows[1]))
+        
+        try:
+            skip_footer = int(config['SHEET_1']['skip_footer'])
+        except:
+            skip_footer = 0
+        
+        df_collection[0] = pd.read_csv(input_filename, quotechar='"',sep=seperator,engine='python',skiprows=int(skip_rows[1]),skipfooter=skip_footer)
         sheet_names = ['Sheet1']
     else:
         sheet_names = config['INITIAL']['sheet_names'].split(",")
@@ -130,6 +136,11 @@ def parse_file(input_filename,attribute_value):
             skip_rows = str()
 
         print(skip_rows)
+        
+        try:
+            skip_footer = int(config[sheet_name]['skip_footer'])
+        except:
+            skip_footer = 0
 
         try:
             usecols = config[sheet_name]['usecols']
@@ -142,16 +153,17 @@ def parse_file(input_filename,attribute_value):
             if len(usecols) > 0:
                 if len(skip_rows) > 1:
                     df_collection[count] = pd.read_excel(input_filename, sheet_name=sheet, usecols=usecols,
-                                                         skiprows=range(int(skip_rows[0]), int(skip_rows[1])))
+                                                         skiprows=range(int(skip_rows[0]), int(skip_rows[1])),skipfooter=skip_footer)
                 else:
-                    df_collection[count] = pd.read_excel(input_filename, sheet_name=sheet, usecols=usecols)
+                    df_collection[count] = pd.read_excel(input_filename, sheet_name=sheet, usecols=usecols,skipfooter=skip_footer)
             else:
                 if len(skip_rows) > 1:
                     df_collection[count] = pd.read_excel(input_filename, sheet_name=sheet,
-                                                         skiprows=range(int(skip_rows[0]), int(skip_rows[1])))
+                                                         skiprows=range(int(skip_rows[0]), int(skip_rows[1])),skipfooter=skip_footer)
                 else:
-                    df_collection[count] = pd.read_excel(input_filename, sheet_name=sheet)
-
+                    df_collection[count] = pd.read_excel(input_filename, sheet_name=sheet,skipfooter=skip_footer)
+                  
+            
             print (df_collection[0])
 
 
@@ -218,8 +230,13 @@ def parse_file(input_filename,attribute_value):
 
         if len(drop_columns[0]) > 0:
             df_collection[count].drop(drop_columns, axis='columns', inplace=True)
-
-
+            
+            
+        try:
+            df_collection[count]["unit"] = config[sheet_name]['unit']
+        except:
+            df_collection[count]["unit"] ="NULL"                
+    
 
         rename_columns = {}
         try:
@@ -241,10 +258,17 @@ def parse_file(input_filename,attribute_value):
     var_name = config['MELT']['var_name']
 
     # APPEND
+    
+    cc = coco.CountryConverter()
 
     for key in df_collection.keys():
         print(len(df_collection[key].index))
-        if (key!=0):
+        if (key == 0):
+            if 'country_iso_code' not in df_collection[key].columns:
+                df_collection[0]["country_iso_code"] = cc.convert(names = df_collection[0]["country_name"], to = 'ISO3')
+        else:
+            if 'country_iso_code' not in df_collection[key].columns:
+                df_collection[key]["country_iso_code"] = cc.convert(names = df_collection[key]["country_name"], to = 'ISO3')
             df_collection[0]=pd.DataFrame.append(df_collection[0],df_collection[key], ignore_index=True)
 
     print(len(df_collection[0].index))
@@ -258,16 +282,16 @@ def parse_file(input_filename,attribute_value):
     print(columns)
 
     # Add additional columns needed for target table
-    df_collection[0]['id'] = np.nan
-    df_collection[0]['dml_user'] = 'G804103'
-    df_collection[0]['dml_timestamp'] = np.nan
+    #df_collection[0]['id'] = np.nan
+    #df_collection[0]['dml_user'] = 'G804103'
+    #df_collection[0]['dml_timestamp'] = np.nan
     df_collection[0]['rec_source'] = os.path.basename(input_filename)
-    df_collection[0]['alos_id'] = 20  # ???
-    df_collection[0]['tech_start'] = np.nan
-    df_collection[0]['tech_end'] = np.nan
+    #df_collection[0]['alos_id'] = 20  # ???
+    #df_collection[0]['tech_start'] = np.nan
+    #df_collection[0]['tech_end'] = np.nan
     df_collection[0]['data_provider'] = data_provider
-    df_collection[0]['valid_from'] = '01.01.1900'
-    df_collection[0]['valid_until'] = '31.12.9999'
+    #df_collection[0]['valid_from'] = '01.01.1900'
+    #df_collection[0]['valid_until'] = '31.12.9999'
     if "country_iso_code" not in columns:
         df_collection[0]['country_iso_code'] = ''
 
@@ -291,10 +315,7 @@ def parse_file(input_filename,attribute_value):
     print(columns)
 
     # Reorder the columns to the structure of target table
-    column_names = ["id", "dml_user", "dml_timestamp", "rec_source", "alos_id", "tech_start", "tech_end",
-                    "data_provider",
-                    "country_name", "country_iso_code", "validity_date", "attribute", "value", "valid_from",
-                    "valid_until"]
+    column_names = [ "rec_source", "data_provider","country_name", "country_iso_code", "validity_date", "attribute", "value","unit"]
     df_collection[0] = df_collection[0].reindex(columns=column_names)
     # write into CSV file
 
@@ -370,8 +391,13 @@ for input_filename in file_list:
         # file_type = input_filename.split(".")[1]
         # file_name = input_filename.split(".")[0]
         filename_length = len(input_filename)
-        file_type = input_filename[filename_length - 3:filename_length]
-        file_name = input_filename[0:filename_length - 4]
+        if input_filename.endswith(".xls") or input_filename.endswith(".xlsx"):
+            file_type="xls"
+            #file_type = input_filename[filename_length - 3:filename_length]
+        else:
+            file_type="csv"
+        last_dot_pos = input_filename.rfind(".")    
+        file_name = input_filename[0:last_dot_pos-1]
         print(file_type)
         print(file_name)
 
