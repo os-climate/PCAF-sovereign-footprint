@@ -1,75 +1,54 @@
-project-template
-==============================
+<h1 align="center">PCAF Sovereign Footprint</h1>
 
-template for the team to use
+## Project Description
 
-Project Organization
-------------
+PCAF have defined Scope 1, Scope 2 and Scope 3 carbon emissions for Sovereigns in analogy to the GHG Protocol’s definition for Community-Scale Greenhouse Gas Inventories (Cities):
+ 
+- **Scope 1:** Domestic GHG emissions from sources located within the country territory. This aligns with the UNFCCC definition of domestic territorial emissions, including emissions from exported goods and services. (Production Emissions). Separate reporting incl./excl. land use, land use-change and forestry (LULUCF).
 
-    ├── LICENSE
-    ├── Makefile                                <- Makefile with commands like `make data` or `make train`
-    ├── Pipfile                                 <- Pipfile stating package configuration as used by Pipenv.
-    ├── Pipfile.lock                            <- Pipfile.lock stating a pinned down software stack with as used by Pipenv.
-    ├── README.md                               <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external                            <- Data from third party sources.
-    │   ├── interim                             <- Intermediate data that has been transformed.
-    │   ├── processed                           <- The final, canonical data sets for modeling.
-    │   └── raw                                 <- The original, immutable data dump.
-    │
-    ├── docs                                    <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models                                  <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks                               <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                                               the creator's initials, and a short `-` delimited description, e.g.
-    │                                               `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references                              <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports                                 <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures                             <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt                        <- The requirements file stating direct dependencies if a library
-    │                                               is developed.
-    │
-    ├── setup.py                                <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                                     <- Source code for use in this project.
-    │   ├── __init__.py                         <- Makes src a Python module
-    │   │
-    │   ├── data                                <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features                            <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models                              <- Scripts to train models and then use trained models to make
-    │   │   │                                       predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization                       <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    ├── .thoth.yaml                             <- Thoth's configuration file
-    ├── .aicoe-ci.yaml                          <- AICoE CI configuration file (https://github.com/AICoE/aicoe-ci)
-    │
-    ├── .github                                 <- GitHub configuration folder
-    │   ├── PULL_REQUEST_TEMPLATE               <- GitHub templates for pull requests
-    │   │
-    │   ├── ISSUE_TEMPLATE                      <- GitHub templates for issues
-    |       ├── {major|minor|patch}_release.md  <- If Khebut GitHub App Bot (https://github.com/apps/khebhut) is installed, the issue will trigger a major|minor|patch release.
-    │       |                                       The bot will open a Pull Request to update the CHANGELOG and fix the opened issue.
-    │       |                                       NOTE: only users that are allowed to release (a.k.a. maintainers specified in the .thoth.yaml file) should open the issue, otherwise bot will
-    │       |                                       reject them, commenting and closing the issue.
-    │       |                                       If AICoE CI GitHub App (https://github.com/apps/aicoe-ci) is installed, once the pull request is merged a new tag is created by the bot
-    │       |                                       and the pipeline to build and push image starts.
-    │       |
-    |       └── redeliver_container_image.md    <- If the tag exists and AICoE CI GitHub App (https://github.com/apps/aicoe-ci) is installed, the issue will retrigger the pipeline to build and
-    │                                               push image container image. NOTE: It should be used if the pipeline triggered with the {major|minor|patch}_release failed for any reason.
-    |
-    └── tox.ini                                 <- tox file with settings for running tox; see tox.readthedocs.io
+- **Scope 2:** GHG emissions occurring as a consequence of the domestic use of grid-supplied electricity, heat, steam and/or cooling which is imported from another territory
 
---------
+- **Scope 3:** Emissions attributable to non-energy imports as a result of activities taking place within the country territory
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+## Definitions
+
+- **Consumption Emissions:** From these definitions PCAF derive Consumption Emissions as  Scope 1 + Scope 2 + Scope 3 – emissions related to exports of goods and services
+ 
+- **Intensity measures:** Intensity measures are defined for production emissions per GDP and Purchasing Power Parity adjusted GDP. For consumption emissions the analogous intensity metric is per capita.
+
+## Sources
+
+- **Scope 1:** UNFCCC Annex I including LULUCF and excluding LULUCF taken from https://di.unfccc.int/time_series
+
+- **Scope 2 and 3:** Query based on “My Queries” Tool in https://stats.oecd.org/Index.aspx?DataSetCode=IO_GHG_2021
+
+- **GDP and PPP adj. GDP:**  https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
+
+## Implementation
+
+- Amazon S3 to store the source files
+- JupyterHub used to edit and execute the notebooks
+- Github Link for source code: https://github.com/os-climate/PCAF-sovereign-footprint.git
+- **Used Python Libraries:** 
+1.  Pandas to read and transform Excel and CSV files
+2. Pint to deal with the units
+3. Pycountry and Country-converter to map the country names with the ISO codes
+
+- **Trino** as query engine and object storage
+
+
+ 
+
+
+ 
+
+ 
+
+
+
+
+## Author
+
+**Mutlu Ersin**
+
+- [Profile](https://github.com/mersin35)
