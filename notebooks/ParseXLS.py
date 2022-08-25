@@ -131,7 +131,13 @@ def parse_file(input_filename,config,attribute_value,file_type,data_provider,out
         except:
             skip_footer = 0
         
-        df_collection[0] = pd.read_csv(input_filename, quotechar='"',sep=seperator,engine='python',skiprows=int(skip_rows[1]),skipfooter=skip_footer)
+        if len(skip_rows) > 1:
+            df_collection[0] = pd.read_csv(input_filename, quotechar='"',sep=seperator,engine='python',skiprows=int(skip_rows[1]),skipfooter=skip_footer)
+        else:
+            df_collection[0] = pd.read_csv(input_filename, quotechar='"',sep=seperator,engine='python',skipfooter=skip_footer)
+        
+        print(df_collection[0])
+            
         #drop unnamed columns
         df_collection[0] = df_collection[0].loc[:, ~df_collection[0].columns.str.contains('^Unnamed')]
         sheet_names = ['Sheet1']
@@ -193,19 +199,6 @@ def parse_file(input_filename,config,attribute_value,file_type,data_provider,out
             eval_str = "df_collection[" + str(count) + "][[" + select_columns_quoted + "]]"
             df_collection[count] = eval(eval_str)
 
-        try:
-            chained_filter_condition = config[sheet_name]['chained_filter_condition'].split(",")
-        except:
-            chained_filter_condition = []
-
-        if (len(chained_filter_condition)>0):
-            for condition in chained_filter_condition:
-                if (len(condition) > 0):
-                    eval_condition = "df_collection[" + str(count) + "][(df_collection[" + str(count) + "]." + condition + ")]"
-                    df_collection[count] = eval(eval_condition)
-        if dropna == "yes":
-            df_collection[count] = df_collection[count].dropna(how='all', axis=1)
-
 
 
         try:
@@ -234,21 +227,21 @@ def parse_file(input_filename,config,attribute_value,file_type,data_provider,out
                 # otherwise set the return value
                 df_collection[count]["attribute"] = eval_result
 
-        try:
-            drop_columns = config[sheet_name]['drop_columns'].split(",")
-        except:
-            drop_columns=[]
-
-        if len(drop_columns[0]) > 0:
-            df_collection[count].drop(drop_columns, axis='columns', inplace=True)
-            
+                    
             
         try:
-            df_collection[count]["units"] = config[sheet_name]['units']
+            eval_components = config[sheet_name]['units'].split("+")
+            eval_result = eval_formula(df_collection,eval_components, count, sheet)
+            try:
+                # if necessary evaluate
+                df_collection[count]["units"] = eval(eval_result)
+            except:
+                # otherwise set the return value
+                df_collection[count]["units"] = eval_result
         except:
             df_collection[count]["units"] =""                
     
-
+        print("column names original:" + df_collection[count].columns)
         rename_columns = {}
         try:
             rename_columns = config[sheet_name]['rename_columns'].split(",")
@@ -263,6 +256,32 @@ def parse_file(input_filename,config,attribute_value,file_type,data_provider,out
                 # rename columns according to the target
                 df_collection[count].rename({column_name: column_name_new}, axis=1, inplace=True)
 
+        
+        print("column names after rename:" + df_collection[count].columns)
+        
+        try:
+            chained_filter_condition = config[sheet_name]['chained_filter_condition'].split(",")
+        except:
+            chained_filter_condition = []
+
+        if (len(chained_filter_condition)>0):
+            for condition in chained_filter_condition:
+                if (len(condition) > 0):
+                    eval_condition = "df_collection[" + str(count) + "][(df_collection[" + str(count) + "]." + condition + ")]"
+                    print("eval_condition:" + eval_condition)
+                    df_collection[count] = eval(eval_condition)
+        if dropna == "yes":
+            df_collection[count] = df_collection[count].dropna(how='all', axis=1)
+            
+        try:
+            drop_columns = config[sheet_name]['drop_columns'].split(",")
+        except:
+            drop_columns=[]
+
+        if len(drop_columns[0]) > 0:
+            df_collection[count].drop(drop_columns, axis='columns', inplace=True)    
+        
+        
         count = count + 1
 
     id_vars = config['MELT']['id_vars'].split(",")
@@ -283,11 +302,14 @@ def parse_file(input_filename,config,attribute_value,file_type,data_provider,out
             df_collection[0]=pd.DataFrame.append(df_collection[0],df_collection[key], ignore_index=True)
 
     print(len(df_collection[0].index))
+    print('before melt')
+    print(df_collection[0])
     if len(var_name) > 0:
         df_collection[0] = pd.melt(df_collection[0], id_vars=id_vars,
                                    var_name=var_name,
                                    value_name='value')
-
+    print('after melt')
+    print(df_collection[0]) 
           
     
     print("list columns")
