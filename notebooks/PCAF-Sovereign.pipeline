@@ -21,7 +21,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
+              "runtime_image": "quay.io/grpereir/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -84,7 +84,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
+              "runtime_image": "quay.io/grpereir/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -154,7 +154,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
+              "runtime_image": "quay.io/grpereir/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 1
@@ -224,7 +224,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
+              "runtime_image": "quay.io/grpereir/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -233,7 +233,7 @@
             "ui_data": {
               "label": "UNFCC-GHG-total-with-LULUCF.ipynb",
               "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 355.0000305175781,
+              "x_pos": 356.0000305175781,
               "y_pos": 223.0000228881836,
               "description": "Run notebook file"
             }
@@ -294,7 +294,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
+              "runtime_image": "quay.io/grpereir/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -374,7 +374,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
+              "runtime_image": "quay.io/grpereir/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -444,7 +444,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
+              "runtime_image": "quay.io/grpereir/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -514,7 +514,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
+              "runtime_image": "quay.io/grpereir/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -523,8 +523,8 @@
             "ui_data": {
               "label": "OECD-EXCH-ingest.ipynb",
               "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 567,
-              "y_pos": 487.0000228881836,
+              "x_pos": 568,
+              "y_pos": 484.0000228881836,
               "description": "Run notebook file"
             }
           },
@@ -584,7 +584,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
+              "runtime_image": "quay.io/grpereir/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 1
