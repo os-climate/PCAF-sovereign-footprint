@@ -14,7 +14,7 @@ ENV JUPYTER_ENABLE_LAB="1" \
     THOTH_PROVENANCE_CHECK="0" \
     GIT_SSL_NO_VERIFY=true \
     GIT_REPO_NAME="PCAF-sovereign-footprint" \
-    GIT_REPO_URL="https://github.com/os-climate/PCAF-sovereign-footprint"
+    GIT_REPO_URL="https://github.com/os-climate/PCAF-sovereign-footprint/tree/elyra-pipeline-200"
 
 USER root
 
