@@ -84,7 +84,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -154,7 +154,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 1
@@ -224,7 +224,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -294,7 +294,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -374,7 +374,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -444,7 +444,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -514,7 +514,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 2
@@ -584,7 +584,7 @@
               "dependencies": [],
               "include_subdirectories": false,
               "mounted_volumes": [],
-              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.1",
               "cpu": 1,
               "gpu": 0,
               "memory": 1
