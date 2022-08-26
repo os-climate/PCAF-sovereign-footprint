@@ -1,0 +1,667 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "8136c715-ec83-4858-a6f9-86c9f44cbdde",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "PCAF-init-requirements.ipynb",
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_secrets": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "cpu": 1,
+              "gpu": 0,
+              "memory": 2
+            },
+            "label": "",
+            "ui_data": {
+              "label": "PCAF-init-requirements.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 38.000001430511475,
+              "y_pos": 1003.9999694824219,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "f4abcfb4-9182-459c-a818-c9f6b8a87d29",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "WDI-GDP-ingest.ipynb",
+              "outputs": [],
+              "env_vars": [
+                "CREDENTIAL_DOTENV_DIR=",
+                "PWD=",
+                "S3_LANDING_ENDPOINT=",
+                "S3_LANDING_ACCESS_KEY=",
+                "S3_LANDING_SECRET_KEY=",
+                "S3_LANDING_BUCKET="
+              ],
+              "kubernetes_secrets": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "cpu": 1,
+              "gpu": 0,
+              "memory": 2
+            },
+            "label": "",
+            "ui_data": {
+              "label": "WDI-GDP-ingest.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 352.0000305175781,
+              "y_pos": 740.9999694824219,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "8beaa8ff-9faf-4d47-a65a-48e08fdfbb03",
+                  "node_id_ref": "8136c715-ec83-4858-a6f9-86c9f44cbdde",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "6399f8a3-fa60-44ae-a095-19f2caf9fc4a",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "UNFCC-GHG-total-without-LULUCF.ipynb",
+              "outputs": [],
+              "env_vars": [
+                "CREDENTIAL_DOTENV_DIR=",
+                "PWD=",
+                "S3_LANDING_ENDPOINT=",
+                "S3_LANDING_ACCESS_KEY=",
+                "S3_LANDING_SECRET_KEY=",
+                "S3_LANDING_BUCKET="
+              ],
+              "kubernetes_secrets": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "cpu": 1,
+              "gpu": 0,
+              "memory": 1
+            },
+            "label": "",
+            "ui_data": {
+              "label": "UNFCC-GHG-total-without-LULUCF.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 352.0000305175781,
+              "y_pos": 823,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "9f7271ed-54fe-4411-a08f-7cfe842252ea",
+                  "node_id_ref": "8136c715-ec83-4858-a6f9-86c9f44cbdde",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "314ffab4-2ef9-459a-a348-630f9d423801",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "UNFCC-GHG-total-with-LULUCF.ipynb",
+              "outputs": [],
+              "env_vars": [
+                "CREDENTIAL_DOTENV_DIR=",
+                "PWD=",
+                "S3_LANDING_ENDPOINT=",
+                "S3_LANDING_ACCESS_KEY=",
+                "S3_LANDING_SECRET_KEY=",
+                "S3_LANDING_BUCKET="
+              ],
+              "kubernetes_secrets": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "cpu": 1,
+              "gpu": 0,
+              "memory": 2
+            },
+            "label": "",
+            "ui_data": {
+              "label": "UNFCC-GHG-total-with-LULUCF.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 350.0000305175781,
+              "y_pos": 898,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "ba48ed99-dd90-4cb7-af0e-c15525a5666c",
+                  "node_id_ref": "8136c715-ec83-4858-a6f9-86c9f44cbdde",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "a3190364-c88d-442f-a088-cf97f4a35da6",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "calc_UNFCCC_sovereign_emissions.ipynb",
+              "outputs": [],
+              "env_vars": [
+                "CREDENTIAL_DOTENV_DIR=",
+                "PWD=",
+                "S3_LANDING_ENDPOINT=",
+                "S3_LANDING_ACCESS_KEY=",
+                "S3_LANDING_SECRET_KEY=",
+                "S3_LANDING_BUCKET="
+              ],
+              "kubernetes_secrets": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "cpu": 1,
+              "gpu": 0,
+              "memory": 2
+            },
+            "label": "",
+            "ui_data": {
+              "label": "calc_UNFCCC_sovereign_emissions.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 677,
+              "y_pos": 905,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "c95541aa-cf52-42b5-8177-84ff0b47b2b3",
+                  "node_id_ref": "f4abcfb4-9182-459c-a818-c9f6b8a87d29",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "4b618fba-bfce-44a2-be50-f022ead7e127",
+                  "node_id_ref": "6399f8a3-fa60-44ae-a095-19f2caf9fc4a",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "d3ef928a-d8b6-438c-9d1f-3064f3524f53",
+                  "node_id_ref": "314ffab4-2ef9-459a-a348-630f9d423801",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "dbe97d5b-cfee-4a61-b5e4-5dbe9aa70564",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "OECD-IMGR-FCO2-ingest.ipynb",
+              "outputs": [],
+              "env_vars": [
+                "CREDENTIAL_DOTENV_DIR=",
+                "PWD=",
+                "S3_LANDING_ENDPOINT=",
+                "S3_LANDING_ACCESS_KEY=",
+                "S3_LANDING_SECRET_KEY=",
+                "S3_LANDING_BUCKET="
+              ],
+              "kubernetes_secrets": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "cpu": 1,
+              "gpu": 0,
+              "memory": 2
+            },
+            "label": "",
+            "ui_data": {
+              "label": "OECD-IMGR-FCO2-ingest.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 559,
+              "y_pos": 1005,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "5919bfe3-98dd-4594-bde4-ee6495922b8c",
+                  "node_id_ref": "8136c715-ec83-4858-a6f9-86c9f44cbdde",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "408b3c8c-37fa-4033-8482-361770f6e5d5",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "OECD-EXGR-DCO2-ingest.ipynb",
+              "outputs": [],
+              "env_vars": [
+                "CREDENTIAL_DOTENV_DIR=",
+                "PWD=",
+                "S3_LANDING_ENDPOINT=",
+                "S3_LANDING_ACCESS_KEY=",
+                "S3_LANDING_SECRET_KEY=",
+                "S3_LANDING_BUCKET="
+              ],
+              "kubernetes_secrets": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "cpu": 1,
+              "gpu": 0,
+              "memory": 2
+            },
+            "label": "",
+            "ui_data": {
+              "label": "OECD-EXGR-DCO2-ingest.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 560.9999694824219,
+              "y_pos": 1083,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "6ffcb97d-d9d2-4003-86a9-f1cac6ffbe09",
+                  "node_id_ref": "8136c715-ec83-4858-a6f9-86c9f44cbdde",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "0cd5ede3-8a29-42be-8f29-94d30f5bf385",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "OECD-EXCH-ingest.ipynb",
+              "outputs": [],
+              "env_vars": [
+                "CREDENTIAL_DOTENV_DIR=",
+                "PWD=",
+                "S3_LANDING_ENDPOINT=",
+                "S3_LANDING_ACCESS_KEY=",
+                "S3_LANDING_SECRET_KEY=",
+                "S3_LANDING_BUCKET="
+              ],
+              "kubernetes_secrets": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "cpu": 1,
+              "gpu": 0,
+              "memory": 2
+            },
+            "label": "",
+            "ui_data": {
+              "label": "OECD-EXCH-ingest.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 562,
+              "y_pos": 1162,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "7ea9ad9a-b7fd-4e82-888f-ce35273bdf17",
+                  "node_id_ref": "8136c715-ec83-4858-a6f9-86c9f44cbdde",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "8f51d7ea-7fc6-4860-bb55-dc1256dcc87e",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "calc_total_sovereign_emissions.ipynb",
+              "outputs": [],
+              "env_vars": [
+                "CREDENTIAL_DOTENV_DIR=",
+                "PWD=",
+                "S3_LANDING_ENDPOINT=",
+                "S3_LANDING_ACCESS_KEY=",
+                "S3_LANDING_SECRET_KEY=",
+                "S3_LANDING_BUCKET="
+              ],
+              "kubernetes_secrets": [],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "quay.io/os-climate/aicoe-osc-demo:v0.18.0",
+              "cpu": 1,
+              "gpu": 0,
+              "memory": 1
+            },
+            "label": "",
+            "ui_data": {
+              "label": "calc_total_sovereign_emissions.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 985,
+              "y_pos": 904,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "5675194b-f7d2-4989-861d-a0140b1c497a",
+                  "node_id_ref": "a3190364-c88d-442f-a088-cf97f4a35da6",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "13ad1432-d8f9-49a2-8630-d19f160f998f",
+                  "node_id_ref": "dbe97d5b-cfee-4a61-b5e4-5dbe9aa70564",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "5e60ffb2-0407-4ad6-9cb0-f292c07a0785",
+                  "node_id_ref": "408b3c8c-37fa-4033-8482-361770f6e5d5",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "58a4996f-4d8c-4052-9a26-fc366877637d",
+                  "node_id_ref": "0cd5ede3-8a29-42be-8f29-94d30f5bf385",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": []
+        },
+        "version": 7,
+        "properties": {
+          "name": "PCAF-Sovereign",
+          "runtime": "Generic"
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}
