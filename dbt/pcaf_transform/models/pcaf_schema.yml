@@ -1,0 +1,276 @@
+version: 2
+
+models:
+  - name: sf_wdi_gdp
+    description: "\nThis indicator provides per capita values for gross domestic product (GDP) expressed in current international dollars converted by purchasing power parity (PPP) conversion factor. \n\nGDP is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. conversion factor is a spatial price deflator and currency converter that controls for price level differences between countries. Total population is a mid-year population based on the de facto definition of population, which counts all residents regardless of legal status or citizenship."
+
+    columns:
+      - name: rec_source
+        description: "API_NY.GDP.MKTP.CD_DS2_en_csv_v2.csv and API_NY.GDP.MKTP.PP.CD_DS2_en_csv_v2.csv"
+      - name: data_provider
+        description: "WDI"
+        tags: ['WDI']
+      - name: country_iso_code
+        description: "ISO-3166 Country Code (alpha_3)"
+        tags: ['ISO']
+      - name: country_name
+        description: "ISO-3166 Country Name"
+        tags: ['ISO']
+      - name: attribute
+        description: "GDP or GDP PPP"
+      - name: value
+        description: "value of GDP or GDP PPP"
+      - name: value_units
+        description: "USD"
+      - name: validity_date
+        description: "Year of measurement"
+
+  - name: sf_unfccc_without_lulucf
+    description: "\nUNFCCC GHG Total excluding LULUCF by country and year"
+
+    columns:
+      - name: rec_source
+        description: "Annual_Net_emissions_removals_in_Gg_CO\u2082_equivalent_excl_LULUCF.csv and Time_Series_GHG_total_without_LULUCF_in_kt_CO\u2082_equivalent.xlsx"
+      - name: data_provider
+        description: "UNFCCC"
+      - name: country_iso_code
+        description: "ISO-3166 Country Code (alpha_3)"
+        tags: ['ISO']
+      - name: country_name
+        description: "ISO-3166 Country Name"
+        tags: ['ISO']
+      - name: attribute
+        description: "Time Series - GHG total with LULUCF"
+      - name: value
+        description: "kt CO\u2082 equivalent"
+      - name: value_units
+        description: "kt CO2e"
+      - name: validity_date
+        description: "Year of measurement"
+
+  - name: sf_unfccc_with_lulucf
+    description: "\nUNFCCC GHG Total with LULUCF by country and year"
+
+    columns:
+      - name: rec_source
+        description: "Annual_Net_emissions_removals_in_Gg_CO\u2082_equivalent_incl_LULUCF.csv and Time_Series_GHG_total_with_LULUCF_in_kt_CO\u2082_equivalent.xlsx"
+      - name: data_provider
+        description: "UNFCCC"
+      - name: country_iso_code
+        description: "ISO-3166 Country Code (alpha_3)"
+        tags: ['ISO']
+      - name: country_name
+        description: "ISO-3166 Country Name"
+        tags: ['ISO']
+      - name: attribute
+        description: "Time Series - GHG total with LULUCF"
+      - name: value
+        description: "kt CO\u2082 equivalent"
+      - name: value_units
+        description: "kt CO2e"
+      - name: validity_date
+        description: "Year of measurement"
+
+  - name: sf_primap_hist_emissions
+    description: "\nG\u00fctschow, J.; Pfl\u00fcger, M. (2023): The PRIMAP-hist national historical emissions time series v2.4.1 (1750-2021). zenodo. doi:10.5281/zenodo.7585420."
+
+    columns:
+      - name: rec_source
+        description: "Guetschow-et-al-2022-PRIMAP-hist_v2.4_11-Oct-2022.csv"
+      - name: data_provider
+        description: "PRIMAP"
+      - name: country_iso_code
+        description: "ISO-3166 Country Code (alpha_3)"
+        tags: ['ISO']
+      - name: country_name
+        description: "ISO-3166 Country Name"
+        tags: ['ISO']
+      - name: attribute
+        description: "KYOTOGHG (AR4GWP100)"
+      - name: value
+        description: "value of GDP or GDP PPP"
+      - name: value_units
+        description: "kt CO2 / a"
+      - name: validity_date
+        description: "Year of measurement"
+
+  - name: sf_oecd_imgr_fco2
+    description: "\nForeign CO2 emissions embodied in gross imports captures the foreign CO2 emissions embodied in gross imports of country/region c with origin in exporting industry i in exporting country/region partner p.\nNote: Regions are treated as a unit, i.e. IMGR_FCO2 excludes intra-regional trade, as so, intra-region flows are considered as domestic."
+
+    columns:
+      - name: data_provider
+        description: "OECD"
+      - name: country_iso_code
+        description: "ISO-3166 Country Code (alpha_3)"
+        tags: ['ISO']
+      - name: partner_iso_code
+        description: "ISO-3166 Country Code (alpha_3) of the trading partner"
+        tags: ['ISO']
+      - name: industry_name
+        description: "OECD Industry or Aggregation Name"
+      - name: industry_code
+        description: "OECD Industry or Aggregation Code"
+      - name: country_name
+        description: "ISO-3166 Country Name"
+        tags: ['ISO']
+      - name: attribute
+        description: "Foreign CO2 emissions embodied in gross imports"
+      - name: value
+        description: "Mt CO2 emissions embodied in gross imports"
+      - name: value_units
+        description: "Mt CO2"
+      - name: validity_date
+        description: "Year of measurement"
+
+  - name: sf_oecd_exgr_dco2
+    description: "\nIMGR_DCO2 c,p,i Domestic CO2 emissions embodied in gross imports of country/region c with origin in exporting industry i in exporting country/region partner p.\nNote: Regions are treated as a unit, i.e., IMGR_DCO2 excludes intra-regional trade, as so, intra-region flows are considered as domestic."
+
+    columns:
+      - name: data_provider
+        description: "OECD"
+      - name: country_iso_code
+        description: "ISO-3166 Country Code (alpha_3)"
+        tags: ['ISO']
+      - name: partner_iso_code
+        description: "ISO-3166 Country Code (alpha_3) of the trading partner"
+        tags: ['ISO']
+      - name: industry_name
+        description: "OECD Industry or Aggregation Name"
+      - name: industry_code
+        description: "OECD Industry or Aggregation Code"
+      - name: country_name
+        description: "ISO-3166 Country Name"
+        tags: ['ISO']
+      - name: attribute
+        description: "Domestic CO2 emissions embodied in gross exports"
+      - name: value
+        description: "Mt CO2 emissions embodied in gross exports"
+      - name: value_units
+        description: "Mt CO2"
+      - name: validity_date
+        description: "Year of measurement"
+
+  - name: sf_oecd_exch_rates
+    description: "\nAverage annual exchange rate converting subject currency to USD."
+
+    columns:
+      - name: country_iso_code
+        description: "ISO-3166 Country Code (alpha_3)"
+        tags: ['ISO']
+      - name: attribute
+        description: "Foreign Currency Exchange Rate"
+      - name: value
+        description: "Units per 1.0 USD"
+      - name: validity_date
+        description: "Year of measurement"
+
+  - name: sf_wdi_population
+    description: "\nTotal population is a mid-year population based on the de facto definition of population, which counts all residents regardless of legal status or citizenship."
+
+    columns:
+      - name: rec_source
+        description: "Population_Data.csv"
+      - name: data_provider
+        description: "WDI"
+        tags: ['WDI']
+      - name: country_iso_code
+        description: "ISO-3166 Country Code (alpha_3)"
+        tags: ['ISO']
+      - name: country_name
+        description: "ISO-3166 Country Name"
+        tags: ['ISO']
+      - name: attribute
+        description: "Population, total"
+      - name: value
+        description: "Population"
+      - name: value_units
+        description: "People, whether citizens or not"
+      - name: validity_date
+        description: "Year of measurement"
+
+  - name: sf_total_sovereign_emissions
+    description: "\nUNFCCC sovereign emissions by country and year"
+
+    columns:
+      - name: country_iso_code
+        description: "ISO-3166 Country Code (alpha_3)"
+        tags: ['ISO']
+      - name: validity_date
+        description: "Year of measurement"
+      - name: year
+        description: "Year of measurement"
+        tags: ['annual']
+      - name: scope1_excl_lulucf
+        description: "if not NULL, Scope 1 emissions excluding LULUCF"
+      - name: scope1_excl_lulucf_units
+        description: "kt CO2eq"
+      - name: scope1_excl_source
+        description: "UNFCC or PRIMAP or NULL"
+      - name: scope1_incl_lulucf
+        description: "if not NULL, Scope 1 emissions including LULUCF"
+      - name: scope1_incl_lulucf_units
+        description: "kt CO2eq"
+      - name: scope1_incl_source
+        description: "UNFCC or PRIMAP or NULL"
+      - name: scope2_value
+        description: "if not NULL, Scope 2 emissions"
+      - name: scope2_value_units
+        description: "kt CO2eq"
+      - name: scope2_source
+        description: "OECD -> IMGR_FCO2.csv -> Industry_Code = D35  -> Aggregation grouped by Partner_ISO_CODE"
+        tags: ['ISO']
+      - name: scope3_value
+        description: "if not NULL, Scope 3 emissions"
+      - name: scope3_value_units
+        description: "kt CO2eq"
+      - name: scope3_source
+        description: "OECD -> IMGR_FCO2.csv -> Indutry_Code = DTOTAL - Scope_2 Value"
+      - name: exported_emissions
+        description: "if not NULL, exported emissions"
+      - name: exported_emissions_units
+        description: "kt CO2eq"
+      - name: gdp
+        description: "Gross Domestic Product"
+      - name: gdp_units
+        description: "USD"
+      - name: gdp_ppp
+        description: "Gross Domestic Product, normalized to Purchasing Power Parity"
+      - name: gdp_ppp_units
+        description: "USD"
+      - name: gdp_ppp_source
+        description: "Worldbank -> API_NY.GDP.MKTP.CD_DS2_en_csv_v2_4019306.csv"
+      - name: consumption_emissions_excl_lulucf
+        description: "consumption emissions excluding LULUCH"
+      - name: consumption_emissions_excl_lulucf_units
+        description: "kt CO2e / USD"
+      - name: consumption_emissions_incl_lulucf
+        description: "consumption emissions including LULUCH"
+      - name: consumption_emissions_incl_lulucf_unit
+        description: "kt CO2e / USD"
+      - name: population
+        description: "Population"
+      - name: attribution_factor_scope1_excl_lulucf
+        description: "if not NULL, Scope 1 emissions excluding LULUCF per USD"
+      - name: attribution_factor_scope1_excl_lulucf_units
+        description: "t CO2eq / USD"
+      - name: attribution_factor_scope1_incl_lulucf
+        description: "if not NULL, Scope 1 emissions including LULUCF per USD"
+      - name: attribution_factor_scope1_incl_lulucf_units
+        description: "t CO2eq / USD"
+      - name: attribution_factor_excl_lulucf
+        description: "if not NULL, emissions excluding LULUCF per USD"
+      - name: attribution_factor_excl_lulucf_units
+        description: "t CO2eq / USD"
+      - name: attribution_factor_excl_lulucf_gdp
+        description: "if not NULL, emissions excluding LULUCF per USD"
+      - name: attribution_factor_excl_lulucf_gdp_units
+        description: "t CO2eq / USD"
+      - name: attribution_factor_incl_lulucf
+        description: "if not NULL, emissions including LULUCF per USD"
+      - name: attribution_factor_incl_lulucf_units
+        description: "t CO2eq / USD"
+      - name: attribution_factor_incl_lulucf_gdp
+        description: "if not NULL, emissions including LULUCF per USD"
+      - name: attribution_factor_incl_lulucf_gdp_units
+        description: "t CO2eq / USD"
+

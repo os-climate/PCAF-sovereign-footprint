@@ -1,0 +1,8 @@
+{{ config(materialized='view', view_security='invoker') }}
+with source_data as (
+    select country_iso_code, validity_date, scope1_excl_lulucf, scope1_excl_lulucf_units, scope1_excl_source, scope1_incl_lulucf, scope1_incl_lulucf_units, scope2_value, scope2_value_units, scope3_value, scope3_value_units, exported_emissions, exported_emissions_units, gdp_ppp, gdp_ppp_units, gdp, gdp_units, consumption_emissions_excl_lulucf, consumption_emissions_excl_lulucf_units, consumption_emissions_incl_lulucf, consumption_emissions_incl_lulucf_units, population, consumption_emissions_excl_lulucf_per_capita, consumption_emissions_excl_lulucf_per_capita_units, consumption_emissions_incl_lulucf_per_capita, consumption_emissions_incl_lulucf_per_capita_units, attribution_factor_scope1_excl_lulucf, attribution_factor_scope1_excl_lulucf_units, attribution_factor_scope1_incl_lulucf, attribution_factor_scope1_incl_lulucf_units, attribution_factor_excl_lulucf, attribution_factor_excl_lulucf_units, attribution_factor_excl_lulucf_gdp, attribution_factor_excl_lulucf_gdp_units, attribution_factor_incl_lulucf, attribution_factor_incl_lulucf_units, attribution_factor_incl_lulucf_gdp, attribution_factor_incl_lulucf_gdp_units, scope1_incl_source, scope2_source, scope3_source, gdp_ppp_source, year
+    from osc_datacommons_dev.mdt_sandbox.sf_total_sovereign_emissions_source
+)
+select * from source_data
+
+
