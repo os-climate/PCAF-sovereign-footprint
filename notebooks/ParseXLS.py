@@ -136,9 +136,7 @@ def parse_file(input_filename,config,attribute_value,file_type,data_provider,out
         else:
             df_collection[0] = pd.read_csv(input_filename, quotechar='"',sep=seperator,engine='python',skipfooter=skip_footer)
         
-        
         print(df_collection[0])
-        
             
         #drop unnamed columns
         df_collection[0] = df_collection[0].loc[:, ~df_collection[0].columns.str.contains('^Unnamed')]
@@ -182,7 +180,6 @@ def parse_file(input_filename,config,attribute_value,file_type,data_provider,out
                 else:
                     df_collection[count] = pd.read_excel(input_filename, sheet_name=sheet,skipfooter=skip_footer)
                   
-            
             
             #df_collection[count] = df_collection[count].loc[:, ~df_collection[0].columns.str.contains('^Unnamed')]
 
