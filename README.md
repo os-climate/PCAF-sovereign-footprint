@@ -29,7 +29,7 @@ PCAF have defined Scope 1, Scope 2 and Scope 3 carbon emissions for Sovereigns i
 - Amazon S3 to store the source files
 - JupyterHub used to edit and execute the notebooks
 - Github Link for source code: https://github.com/os-climate/PCAF-sovereign-footprint.git
-- **Used Python Libraries:** 
+- **Used Python Libraries:**
 1.  Pandas to read and transform Excel and CSV files
 2. Pint to deal with the units
 3. Pycountry and Country-converter to map the country names with the ISO codes
@@ -37,7 +37,7 @@ PCAF have defined Scope 1, Scope 2 and Scope 3 carbon emissions for Sovereigns i
 - **Trino** as query engine and object storage
 
 
- 
+
 
 
  

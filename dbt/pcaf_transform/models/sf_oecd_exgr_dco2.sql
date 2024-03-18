@@ -4,5 +4,3 @@ with source_data as (
     from osc_datacommons_dev.mdt_sandbox.sf_oecd_exgr_dco2_source
 )
 select * from source_data
-
-
