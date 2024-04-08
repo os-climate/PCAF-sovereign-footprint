@@ -273,4 +273,3 @@ models:
         description: "if not NULL, emissions including LULUCF per USD"
       - name: attribution_factor_incl_lulucf_gdp_units
         description: "t CO2eq / USD"
-

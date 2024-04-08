@@ -4,5 +4,3 @@ with source_data as (
     from osc_datacommons_dev.mdt_sandbox.sf_total_sovereign_emissions_source
 )
 select * from source_data
-
-
