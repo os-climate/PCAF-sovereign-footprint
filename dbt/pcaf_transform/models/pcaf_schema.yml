@@ -1,5 +1,7 @@
 version: 2
 
+# yamllint disable rule:line-length
+
 models:
   - name: sf_wdi_gdp
     description: "\nThis indicator provides per capita values for gross domestic product (GDP) expressed in current international dollars converted by purchasing power parity (PPP) conversion factor. \n\nGDP is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. conversion factor is a spatial price deflator and currency converter that controls for price level differences between countries. Total population is a mid-year population based on the de facto definition of population, which counts all residents regardless of legal status or citizenship."
@@ -9,13 +11,13 @@ models:
         description: "API_NY.GDP.MKTP.CD_DS2_en_csv_v2.csv and API_NY.GDP.MKTP.PP.CD_DS2_en_csv_v2.csv"
       - name: data_provider
         description: "WDI"
-        tags: ['WDI']
+        tags: ["WDI"]
       - name: country_iso_code
         description: "ISO-3166 Country Code (alpha_3)"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: country_name
         description: "ISO-3166 Country Name"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: attribute
         description: "GDP or GDP PPP"
       - name: value
@@ -35,10 +37,10 @@ models:
         description: "UNFCCC"
       - name: country_iso_code
         description: "ISO-3166 Country Code (alpha_3)"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: country_name
         description: "ISO-3166 Country Name"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: attribute
         description: "Time Series - GHG total with LULUCF"
       - name: value
@@ -58,10 +60,10 @@ models:
         description: "UNFCCC"
       - name: country_iso_code
         description: "ISO-3166 Country Code (alpha_3)"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: country_name
         description: "ISO-3166 Country Name"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: attribute
         description: "Time Series - GHG total with LULUCF"
       - name: value
@@ -81,10 +83,10 @@ models:
         description: "PRIMAP"
       - name: country_iso_code
         description: "ISO-3166 Country Code (alpha_3)"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: country_name
         description: "ISO-3166 Country Name"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: attribute
         description: "KYOTOGHG (AR4GWP100)"
       - name: value
@@ -102,17 +104,17 @@ models:
         description: "OECD"
       - name: country_iso_code
         description: "ISO-3166 Country Code (alpha_3)"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: partner_iso_code
         description: "ISO-3166 Country Code (alpha_3) of the trading partner"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: industry_name
         description: "OECD Industry or Aggregation Name"
       - name: industry_code
         description: "OECD Industry or Aggregation Code"
       - name: country_name
         description: "ISO-3166 Country Name"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: attribute
         description: "Foreign CO2 emissions embodied in gross imports"
       - name: value
@@ -130,17 +132,17 @@ models:
         description: "OECD"
       - name: country_iso_code
         description: "ISO-3166 Country Code (alpha_3)"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: partner_iso_code
         description: "ISO-3166 Country Code (alpha_3) of the trading partner"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: industry_name
         description: "OECD Industry or Aggregation Name"
       - name: industry_code
         description: "OECD Industry or Aggregation Code"
       - name: country_name
         description: "ISO-3166 Country Name"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: attribute
         description: "Domestic CO2 emissions embodied in gross exports"
       - name: value
@@ -156,7 +158,7 @@ models:
     columns:
       - name: country_iso_code
         description: "ISO-3166 Country Code (alpha_3)"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: attribute
         description: "Foreign Currency Exchange Rate"
       - name: value
@@ -172,13 +174,13 @@ models:
         description: "Population_Data.csv"
       - name: data_provider
         description: "WDI"
-        tags: ['WDI']
+        tags: ["WDI"]
       - name: country_iso_code
         description: "ISO-3166 Country Code (alpha_3)"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: country_name
         description: "ISO-3166 Country Name"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: attribute
         description: "Population, total"
       - name: value
@@ -194,12 +196,12 @@ models:
     columns:
       - name: country_iso_code
         description: "ISO-3166 Country Code (alpha_3)"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: validity_date
         description: "Year of measurement"
       - name: year
         description: "Year of measurement"
-        tags: ['annual']
+        tags: ["annual"]
       - name: scope1_excl_lulucf
         description: "if not NULL, Scope 1 emissions excluding LULUCF"
       - name: scope1_excl_lulucf_units
@@ -218,7 +220,7 @@ models:
         description: "kt CO2eq"
       - name: scope2_source
         description: "OECD -> IMGR_FCO2.csv -> Industry_Code = D35  -> Aggregation grouped by Partner_ISO_CODE"
-        tags: ['ISO']
+        tags: ["ISO"]
       - name: scope3_value
         description: "if not NULL, Scope 3 emissions"
       - name: scope3_value_units
